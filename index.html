@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WebSocket Sound Control</title>
+  </head>
+  <body>
+    <h1>WebSocket Sound Control</h1>
+    <button id="connectButton">Connect to Server</button>
+    <button id="startStudyButton">Start Study</button>
+    <button id="startBreakButton">Start Break</button>
+
+    <!-- Sound Selection Dropdown -->
+    <select id="soundSelection">
+      <option value="Rain Sound V2.MP3">Rain Sound</option>
+      <option value="Fire Sound.mp3">Fire Sound</option>
+      <option value="Deep Focus Sound.MP3">Deep Focus</option>
+      <option value="Lofi-Test Sound.mp3">Lofi</option>
+      <option value="Rainy Jazz.mp3">Cafe Sound</option>
+      <!-- Add more sound options here -->
+    </select>
+
+    <!-- Mode Selection -->
+    <button id="syncModeButton">Sync to Stream</button>
+    <button id="manualModeButton">Manual Control</button>
+
+    <!-- Audio Player -->
+    <audio id="audioPlayer" controls>
+      <source src="Rain Sound V2.MP3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script src="client.js"></script>
+  </body>
+</html>
