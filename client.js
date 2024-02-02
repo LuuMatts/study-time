@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     var audioPlayer = document.getElementById('audioPlayer');
-    var ws = new WebSocket('ws://localhost:8080');
+    // Use 'wss' for secure WebSocket connections
+var ws = new WebSocket('wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.dev/');
+
     var isSyncMode = true; // Start in Sync mode
 
     // Function to handle state changes based on messages from the server

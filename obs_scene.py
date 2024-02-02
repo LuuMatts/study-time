@@ -1,14 +1,20 @@
 import obspython as obs
 import websocket
 import threading
+import ssl
 
-url = "ws://localhost:8080"
+# Replace with your Replit WebSocket URL
+# url = "wss://your-replit-username.repl.co"
+
+# Use 'wss' for secure WebSocket connections
+url = "wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.dev/"
 
 
 # Function to send message to WebSocket server
 def send_message(message):
     def run():
-        ws = websocket.create_connection(url)
+        # Create a WebSocket connection with SSL context
+        ws = websocket.create_connection(url, sslopt={"cert_reqs": ssl.CERT_NONE})
         ws.send(message)
         ws.close()
 
