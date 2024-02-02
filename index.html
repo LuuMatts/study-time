@@ -2,33 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>WebSocket Sound Control</title>
+    <title>Study Sound Control</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>WebSocket Sound Control</h1>
-    <button id="connectButton">Connect to Server</button>
-    <button id="startStudyButton">Start Study</button>
-    <button id="startBreakButton">Start Break</button>
+    <header class="header">
+      <div class="logo">StudyWithLuca</div>
+      <nav class="navigation">
+        <a
+          href="https://www.youtube.com/channel/UCCUGEFoKFHuhGWhj7ZrR9ag"
+          target="_blank"
+          class="header-button"
+          >YouTube</a
+        >
+        <a
+          href="https://discord.gg/tB9MdCAAm3"
+          target="_blank"
+          class="header-button"
+          >Discord</a
+        >
+      </nav>
+    </header>
 
-    <!-- Sound Selection Dropdown -->
-    <select id="soundSelection">
-      <option value="Rain Sound V2.MP3">Rain Sound</option>
-      <option value="Fire Sound.mp3">Fire Sound</option>
-      <option value="Deep Focus Sound.MP3">Deep Focus</option>
-      <option value="Lofi-Test Sound.mp3">Lofi</option>
-      <option value="Rainy Jazz.mp3">Cafe Sound</option>
-      <!-- Add more sound options here -->
-    </select>
-
-    <!-- Mode Selection -->
-    <button id="syncModeButton">Sync to Stream</button>
-    <button id="manualModeButton">Manual Control</button>
-
-    <!-- Audio Player -->
-    <audio id="audioPlayer" controls>
-      <source src="Rain Sound V2.MP3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+    <main class="main-content">
+      <h1>Study Sound</h1>
+      <p>
+        To connect with the Stream and automatically mute the sound during
+        breaks, click <b>'Sync to Stream'</b>.<br />If you prefer not to connect
+        automatically and want to control it yourself, click <b>'Manual'</b>.
+      </p>
+      <div class="control-buttons">
+        <button id="syncModeButton">Sync to Stream</button>
+        <button id="manualModeButton">Manual</button>
+        <select id="soundSelection">
+          <option value="Rain.mp3">Rain Sound</option>
+          <option value="Fire.mp3">Fire Sound</option>
+          <option value="Lofi.mp3">Lofi Music</option>
+          <option value="Rainy Jazz.mp3">Rainy Jazz Vibes</option>
+          <option value="Deep Focus.mp3">Deep Focus</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <audio id="audioPlayer" controls loop></audio>
+    </main>
 
     <script src="client.js"></script>
   </body>
