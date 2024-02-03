@@ -8,22 +8,22 @@ url = "wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.
 
 # Lists of scene names for each state
 study_scenes = [
-    "Study Scene",
-    "Study Osmo",
+    # "Study Scene",
+    # "Study Osmo",
     "Study",
 ]  # Add all your study-related scene names here
 break_scenes = [
-    "Break Scene",
-    "Break Osmo",
-    "Break Osmo Out",
-    "Break Rain",
-    "Break ???",
-    "Break Zoom1",
-    "Break Party",
-    "Break Scene Out",
-    "Cam Unten Rechts",
-    "Cam Verschieben",
-    "mac",
+    # "Break Scene",
+    # "Break Osmo",
+    # "Break Osmo Out",
+    # "Break Rain",
+    # "Break ???",
+    # "Break Zoom1",
+    # "Break Party",
+    # "Break Scene Out",
+    # "Cam Unten Rechts",
+    # "Cam Verschieben",
+    # "mac",
     "Break",
 ]  # Add all your break-related scene names here
 

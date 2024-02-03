@@ -72,14 +72,21 @@ button:hover {
 #playSoundButton {
     display: none;
   }
-  
+
   /* Show the play button on mobile devices */
   @media (max-width: 600px) {
     #playSoundButton {
       display: inline-block; /* or 'block' depending on your desired layout */
     }
   }
-  
+/* CSS for larger devices like tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Styles that will apply to iPads and similar tablets */
+    #playSoundButton {
+        display: inline-block;
+    }
+}
+
 
 select {
     padding: 10px;
