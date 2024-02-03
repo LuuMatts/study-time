@@ -68,6 +68,19 @@ button:hover {
     background-color: #555;
 }
 
+/* Hide the play button by default */
+#playSoundButton {
+    display: none;
+  }
+  
+  /* Show the play button on mobile devices */
+  @media (max-width: 600px) {
+    #playSoundButton {
+      display: inline-block; /* or 'block' depending on your desired layout */
+    }
+  }
+  
+
 select {
     padding: 10px;
     margin: 0 10px;
