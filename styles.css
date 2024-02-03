@@ -103,8 +103,8 @@ body {
     z-index: 2;
     color: #fff; /* Set paragraph text color to white */
     text-align: center;
-    padding-top: 30px; /* Keep the original padding at the top */
-    padding-bottom: 30px; /* Add padding to the bottom if necessary */
+    padding-top: 0; /* Keep the original padding at the top */
+    padding-bottom: 400px; /* Add padding to the bottom if necessary */
     max-width: 800px;
     margin: auto;
     font-size: 1.1em;
@@ -131,14 +131,14 @@ h1 {
 }
 
 button {
-    background-color: #333;
+    background-color: #1c1b1b;
     color: #fff;
     border: none;
     padding: 10px 20px;
     margin: 0 10px;
     cursor: pointer;
     font-size: 1em;
-    filter: drop-shadow(0 0 0.75rem rgb(254, 254, 254));;
+    filter: drop-shadow(0 0 0.25rem rgb(255, 255, 255));;
 }
 
 /* Apply rounded corners to all buttons */
@@ -158,7 +158,7 @@ button:hover {
 }
 
 .youtube-button:hover {
-    background-color: #cc0000; /* Darker shade of red for hover effect */
+    background-color: #e10000; /* Darker shade of red for hover effect */
 }
 
 /* Styles for Discord button */
@@ -168,7 +168,7 @@ button:hover {
 }
 
 .discord-button:hover {
-    background-color: #5b6dad; /* Darker shade of purple for hover effect */
+    background-color: #5c75ce; /* Darker shade of purple for hover effect */
 }
 
 /* Hide the play button by default */
@@ -205,25 +205,54 @@ audio {
 }
 
 footer {
-    padding: 650px;
-    text-align: center;
-    padding-bottom: 30px;
-    position: relative;
+    position: absolute;
+    bottom: 10px; /* Set the footer at 10px from the bottom of the page */
+    width: 100%; /* Ensure the footer spans the width of the page */
+    text-align: center; /* Center the text inside the footer */
+    padding: 10px 0; /* 10px padding for top and bottom */
     z-index: 10;
+    background: none; /* Assuming you want no background */
+    box-shadow: none; /* Remove shadow if any */
 }
 
- footer hr {
-    border: 0;
-    height: 1px;
-    background-color: black; /* Black line */
-    opacity: 0; /* Adjust opacity as you like */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Drop shadow */
-    margin-bottom: 20px; /* Space between line and text */
+footer hr {
+    display: none; /* Hide the horizontal rule */
 }
 
 footer p {
     margin: 0;
     color: white;
-    opacity: 0.5; /* Low opacity text */
+    opacity: 1; /* Make text fully opaque */
     font-size: 0.9em;
+}
+
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .main-content h1 {
+        margin-top: 0; /* Remove the margin at the top for mobile devices */
+        font-size: 3em; /* Smaller font size for the h1 on mobile */
+    }
+
+    .main-content p {
+        font-size: 1.5em; /* Smaller font size for paragraphs on mobile */
+    }
+    
+    .header {
+        padding: 10px; /* Reduced padding for mobile devices */
+    }
+    
+    .main-content {
+        padding-top: 0; /* Adjust this value as needed for space at the top */
+    }
+
+    .control-buttons button {
+        padding: 8px 16px; /* Smaller padding for buttons on mobile */
+        font-size: 0.8em; /* Smaller font size for buttons on mobile */
+    }
+
+    .control-buttons select {
+        padding: 8px; /* Smaller padding for select on mobile */
+        font-size: 0.8em; /* Smaller font size for select on mobile */
+    }
 }
