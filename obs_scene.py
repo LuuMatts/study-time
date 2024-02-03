@@ -6,29 +6,8 @@ import ssl
 # Replace with your Replit WebSocket server URL
 url = "wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.dev/"
 
-# Lists of scene names for each state
-study_scenes = [
-    # "Study Scene",
-    # "Study Osmo",
-    "Study",
-]  # Add all your study-related scene names here
-break_scenes = [
-    # "Break Scene",
-    # "Break Osmo",
-    # "Break Osmo Out",
-    # "Break Rain",
-    # "Break ???",
-    # "Break Zoom1",
-    # "Break Party",
-    # "Break Scene Out",
-    # "Cam Unten Rechts",
-    # "Cam Verschieben",
-    # "mac",
-    "Break",
-]  # Add all your break-related scene names here
 
-
-# Function to send message to WebSocket server
+# Function to send a message to the WebSocket server
 def send_message(message):
     def run():
         # Create a WebSocket connection with SSL context
@@ -46,14 +25,12 @@ def on_scene_change(event):
         scene_name = obs.obs_source_get_name(current_scene)
         obs.obs_source_release(current_scene)
 
-        # Check if the current scene is in the list of study scenes
-        if scene_name in study_scenes:
+        if scene_name == "Study":
             send_message("start-study")
-        # Check if the current scene is in the list of break scenes
-        elif scene_name in break_scenes:
+        elif scene_name == "Break":
             send_message("start-break")
 
 
-# Register callback
+# Register the callback
 def script_load(settings):
     obs.obs_frontend_add_event_callback(on_scene_change)
