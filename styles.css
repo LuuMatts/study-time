@@ -2,7 +2,11 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    /* Updated background property with gradient */
+    background: linear-gradient(133deg, #0062ff 0%, #d6e6ff 84%, #ccebff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .header {
