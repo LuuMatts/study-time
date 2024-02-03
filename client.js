@@ -1,18 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
     var audioPlayer = document.getElementById('audioPlayer');
+    var playSoundButton = document.getElementById('playSoundButton'); // Reference to the play button
     // Use 'wss' for secure WebSocket connections
-var ws = new WebSocket('wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.dev/');
+    var ws = new WebSocket('wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2fw1.spock.replit.dev/');
 
     var isSyncMode = true; // Start in Sync mode
+    var isMobile = /Mobi|Android/i.test(navigator.userAgent); // Detect mobile devices
 
     // Function to handle state changes based on messages from the server
     function handleStreamState(state) {
         console.log('Handling stream state:', state);
         if (state === 'start-study') {
-            audioPlayer.src = document.getElementById('soundSelection').value; 
-            audioPlayer.play().catch(e => console.error('Playback failed:', e));
+            audioPlayer.src = document.getElementById('soundSelection').value;
+            if (!isMobile) {
+                audioPlayer.play().catch(e => console.error('Playback failed:', e));
+            }
         } else if (state === 'start-break') {
             audioPlayer.pause();
+        }
+    }
+
+    // Function to handle playing audio on mobile devices
+    function handleMobilePlay() {
+        if (audioPlayer.src) {
+            audioPlayer.play().catch(e => console.error('Playback failed:', e));
         }
     }
 
@@ -41,7 +52,9 @@ var ws = new WebSocket('wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2
     document.getElementById('soundSelection').addEventListener('change', function(event) {
         if (!isSyncMode) {
             audioPlayer.src = event.target.value;
-            audioPlayer.play();
+            if (!isMobile) {
+                audioPlayer.play();
+            }
         }
     });
 
@@ -59,4 +72,9 @@ var ws = new WebSocket('wss://b60ffa20-b2bd-4d95-8e36-86ad541db24f-00-1s7px81bj2
         // Enable the sound selection dropdown for manual control
         document.getElementById('soundSelection').disabled = false;
     });
+
+    // Listener for the "Play Sound" button - specific for mobile devices
+    if (playSoundButton) { // Check if the button exists
+        playSoundButton.addEventListener('click', handleMobilePlay);
+    }
 });
