@@ -97,6 +97,7 @@ body {
 
 .main-content {
     font-family: 'Roboto', sans-serif;
+    text-shadow: 1px 1px 5px black;
     flex: 1;
     z-index: 2;
     color: #fff; /* Set paragraph text color to white */
