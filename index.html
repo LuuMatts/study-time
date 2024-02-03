@@ -6,47 +6,63 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <div class="logo">StudyWithLuca</div>
-      <nav class="navigation">
-        <a
-          href="https://www.youtube.com/channel/UCCUGEFoKFHuhGWhj7ZrR9ag"
-          target="_blank"
-          class="header-button"
-          >YouTube</a
-        >
-        <a
-          href="https://discord.gg/tB9MdCAAm3"
-          target="_blank"
-          class="header-button"
-          >Discord</a
-        >
-      </nav>
-    </header>
+    <div class="page-container">
+      <header class="header">
+        <img
+          src="StudyWithLuca Logo.png"
+          alt="Study With Luca Logo"
+          class="logo-image"
+        />
 
-    <main class="main-content">
-      <h1>Study Sound</h1>
-      <p>
-        To connect with the Stream and automatically mute the sound during
-        breaks, click <b>'Sync to Stream'</b>.<br />If you prefer not to connect
-        automatically and want to control it yourself, click <b>'Manual'</b>.
-      </p>
-      <div class="control-buttons">
-        <button id="syncModeButton">Sync to Stream</button>
-        <button id="manualModeButton">Manual</button>
-        <button id="playSoundButton" style="display: none">Play</button>
-        <select id="soundSelection">
-          <option value="Rain.MP3">Rain Sound</option>
-          <option value="Fire.mp3">Fire Sound</option>
-          <option value="Nature Sound.mp3">Nature Sound</option>
-          <option value="White Noise.mp3">White Noise</option>
-          <option value="ASMR Writing.mp3">ASMR Sound</option>
-          <!-- Add more options as needed -->
-        </select>
+        <div class="logo">StudyWithLuca</div>
+        <nav class="navigation">
+          <a
+            href="https://www.youtube.com/channel/UCCUGEFoKFHuhGWhj7ZrR9ag"
+            target="_blank"
+            class="header-button youtube-button"
+            >YouTube</a
+          >
+          <a
+            href="https://discord.gg/tB9MdCAAm3"
+            target="_blank"
+            class="header-button discord-button"
+            >Discord</a
+          >
+        </nav>
+      </header>
+      <div class="container">
+        <div id="cloud-intro"></div>
       </div>
-      <audio id="audioPlayer" controls loop></audio>
-    </main>
-
+      <main class="main-content">
+        <h1>Study Sounds</h1>
+        <p>
+          Click <b>'Sync to Stream'</b> to synchronize the ambient sounds with
+          the live stream's study and break intervals, muting the sound
+          automatically during breaks. - Prefer a personalized experience?<br /><br />Select
+          <b>'Manual'</b> to manage the sounds at your own pace and maintain
+          control throughout your<br />
+          study session.
+        </p>
+        <div class="control-buttons">
+          <button id="syncModeButton">Sync to Stream</button>
+          <button id="manualModeButton">Manual</button>
+          <button id="playSoundButton" style="display: none">Play</button>
+          <select id="soundSelection">
+            <option value="Rain.MP3">Rain Sound</option>
+            <option value="Fire.mp3">Fire Sound</option>
+            <option value="Nature Sound.mp3">Nature Sound</option>
+            <option value="White Noise.mp3">White Noise</option>
+            <option value="ASMR Writing.mp3">ASMR Sound</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+        <audio id="audioPlayer" controls loop></audio>
+      </main>
+      <footer class="footer">
+        <hr />
+        <p>Copyright &copy; StudyWithLuca</p>
+      </footer>
+    </div>
     <script src="client.js"></script>
   </body>
 </html>

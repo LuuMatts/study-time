@@ -1,17 +1,63 @@
-body, html {
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;700&family=Roboto&family=Sixtyfour&display=swap');
+
+html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
-    /* Updated background property with gradient */
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(133deg, #0062ff 0%, #d6e6ff 84%, #ccebff 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-.header {
+/* Clouds background */
+#cloud-intro {
+    position: fixed;
+    z-index: 1;
+    margin-top: 44px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+    url('cloud1.png') repeat-x,
+    url('cloud2.png') repeat-x,
+    url('cloud3.png') repeat-x;
+  animation: 
+    wind1 60s linear infinite,
+    wind2 90s linear infinite,
+    wind3 120s linear infinite;
+}
+
+@keyframes wind1 {
+  from { background-position: 0px top; }
+  to { background-position: -1000px top; }
+}
+
+@keyframes wind2 {
+  from { background-position: 0px top; }
+  to { background-position: -1200px top; }
+}
+
+@keyframes wind3 {
+  from { background-position: 100px top; }
+  to { background-position: -1100px top; }
+}
+
+.logo-image {
+    height: 50px; /* Adjust as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some space between the logo and the text */
+    filter: drop-shadow(1px 1px 1px #000000a2);
+  }
+  
+  .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Align to the start of the flex container */
     align-items: center;
     padding: 20px;
     background-color: #fff;
@@ -24,6 +70,7 @@ body, html {
   }
   
   .navigation {
+    margin-left: auto;
     display: flex;
     gap: 20px; /* Adjust the gap as needed for your desired spacing */
   }
@@ -42,20 +89,39 @@ body, html {
     text-decoration: none; /* This ensures the underline doesn't reappear on hover */
 }
 
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .main-content {
+    font-family: 'Roboto', sans-serif;
+    flex: 1;
+    z-index: 2;
+    color: #fff; /* Set paragraph text color to white */
     text-align: center;
-    padding: 50px;
+    padding-top: 30px; /* Keep the original padding at the top */
+    padding-bottom: 30px; /* Add padding to the bottom if necessary */
     max-width: 800px;
     margin: auto;
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* This will center the content vertically */
 }
 
 h1 {
-    color: #333;
-    font-size: 2.5em;
+    color: #fff;
+    font-size: 3.5em;
+    text-shadow: 5px 5px 2px black;
+    font-family: 'Anton', sans-serif;
+    margin-bottom: 0.5em; /* Adjust this value as needed for space below the H1 */
 }
 
 .control-buttons {
-    margin: 20px 0;
+    margin-top: 1em; /* Adjust this value as needed for space above the buttons */
+    margin-bottom: 1.4em; /* Adjust this value as needed for space below the buttons */
 }
 
 button {
@@ -66,10 +132,37 @@ button {
     margin: 0 10px;
     cursor: pointer;
     font-size: 1em;
+    filter: drop-shadow(0 0 0.75rem rgb(254, 254, 254));;
 }
+
+/* Apply rounded corners to all buttons */
+button, .header-button {
+    border-radius: 5px; /* Adjust the pixel value to increase or decrease the roundness */
+}
+
 
 button:hover {
     background-color: #555;
+}
+
+/* Styles for YouTube button */
+.youtube-button {
+    background-color: #ff1a13; /* YouTube Red */
+    /* Add any other specific styles for the YouTube button here */
+}
+
+.youtube-button:hover {
+    background-color: #cc0000; /* Darker shade of red for hover effect */
+}
+
+/* Styles for Discord button */
+.discord-button {
+    background-color: #768be5; /* Discord Blurple */
+    /* Add any other specific styles for the Discord button here */
+}
+
+.discord-button:hover {
+    background-color: #5b6dad; /* Darker shade of purple for hover effect */
 }
 
 /* Hide the play button by default */
@@ -95,9 +188,36 @@ button:hover {
 select {
     padding: 10px;
     margin: 0 10px;
+    border-radius: 5px;
+    font-size: 1em;
 }
 
 audio {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    filter: drop-shadow(0 0 0.2rem rgb(4, 4, 4));;
+}
+
+footer {
+    padding: 650px;
+    text-align: center;
+    padding-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+ footer hr {
+    border: 0;
+    height: 1px;
+    background-color: black; /* Black line */
+    opacity: 0; /* Adjust opacity as you like */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Drop shadow */
+    margin-bottom: 20px; /* Space between line and text */
+}
+
+footer p {
+    margin: 0;
+    color: white;
+    opacity: 0.5; /* Low opacity text */
+    font-size: 0.9em;
 }
