@@ -36,11 +36,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handling messages from the server
     ws.onmessage = function(event) {
-        console.log('Message from server:', event.data);
-        
-        // Check if the received data dictates the state
-        if (isSyncMode && (event.data === 'start-study' || event.data === 'start-break')) {
-            handleStreamState(event.data);
+        // Check if the received data is a blob
+        if (event.data instanceof Blob) {
+            // Create a FileReader to read the Blob as text
+            var reader = new FileReader();
+            reader.onload = function() {
+                var messageText = reader.result;
+                console.log('Message from server:', messageText);
+                
+                // Now you can handle the text as before
+                if (isSyncMode && (messageText === 'start-study' || messageText === 'start-break')) {
+                    handleStreamState(messageText);
+                }
+            };
+            reader.readAsText(event.data);
+        } else {
+            // If event.data is already a text string, handle as before
+            console.log('Message from server:', event.data);
+            if (isSyncMode && (event.data === 'start-study' || event.data === 'start-break')) {
+                handleStreamState(event.data);
+            }
         }
     };
 
