@@ -1,36 +1,35 @@
 const WebSocket = require('ws');
-const http = require('http'); // Import the HTTP module
-const server = http.createServer(); // Create an HTTP server
-const wss = new WebSocket.Server({ server });
+const http = require('http');
 
-let currentState = 'start-break'; // Default state
+const server = http.createServer();
+const wss = new WebSocket.Server({ noServer: true });
+
+server.on('upgrade', function upgrade(request, socket, head) {
+  wss.handleUpgrade(request, socket, head, function done(ws) {
+    wss.emit('connection', ws, request);
+  });
+});
+
+let currentState = 'start-break';
 
 function broadcast(message) {
-    wss.clients.forEach(function each(client) {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(message);
-        }
-    });
+  wss.clients.forEach(function each(client) {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(message);
+    }
+  });
 }
 
 wss.on('connection', function connection(ws) {
-    console.log('Client connected');
+  console.log('Client connected');
 
-    ws.on('message', function incoming(message) {
-        // Convert Buffer to string if necessary
-        const messageStr = message.toString();
-        console.log('Received from client:', messageStr);
+  ws.on('message', function incoming(message) {
+    console.log('Received:', message);
+    broadcast(message); // Echo back the message
+  });
 
-        if (messageStr === 'start-study' || messageStr === 'start-break') {
-            currentState = messageStr; // Update the currentState variable
-            broadcast(messageStr); // Broadcast this state change to all clients
-        } else if (messageStr === 'request-current-state') {
-            console.log('Sending current state back to the requesting client:', currentState);
-            ws.send(currentState); // Respond only to the requesting client
-        }
-    });
+  ws.send('Welcome!');
 });
 
-server.listen(80); // Start the server on port 80
-
-console.log('WebSocket server started on ws://localhost:80');
+const PORT = process.env.PORT || 8080;
+server.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
