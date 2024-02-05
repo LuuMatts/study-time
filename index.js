@@ -1,5 +1,8 @@
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+const http = require('http'); // Import the HTTP module
+const server = http.createServer(); // Create an HTTP server
+const wss = new WebSocket.Server({ server });
+
 let currentState = 'start-break'; // Default state
 
 function broadcast(message) {
@@ -28,4 +31,6 @@ wss.on('connection', function connection(ws) {
     });
 });
 
-console.log('WebSocket server started on ws://localhost:8080');
+server.listen(80); // Start the server on port 80
+
+console.log('WebSocket server started on ws://localhost:80');
