@@ -1,4 +1,12 @@
 {
+  "name": "your-application-name",
+  "version": "1.0.0",
+  "description": "Your application description",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "ws": "^8.16.0"
   }
