@@ -19,18 +19,26 @@ function broadcast(message) {
 }
 
 // Event listener for new connections to the WebSocket server
+// Set up WebSocket server event listeners
 wss.on('connection', function connection(ws) {
-  console.log('Client connected');
+    console.log('Client connected');
 
-  // Event listener for messages from the clients
-  ws.on('message', function incoming(message) {
-    console.log('Received:', message);
-    // Update the current state and broadcast the message
-    if (message === 'start-study' || message === 'start-break') {
-      currentState = message;
-    }
-    broadcast(message);
-  });
+    // Send the current state when a new client connects
+    ws.send(currentState);
+
+    ws.on('message', function incoming(message) {
+        console.log('Received:', message);
+
+        if (message === 'request-current-state') {
+            // Send the current state back to the requesting client
+            ws.send(currentState);
+        } else if (message === 'start-study' || message === 'start-break') {
+            // Update the current state and broadcast it
+            currentState = message;
+            broadcast(message);
+        }
+    });
+
 
   // Send the current state to the newly connected client
   if (ws.readyState === WebSocket.OPEN) {
