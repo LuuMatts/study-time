@@ -1,28 +1,41 @@
 const WebSocket = require('ws');
+
+// Determine the port to listen on
 const PORT = process.env.PORT || 8080;
 
-const server = new WebSocket.Server({ port: PORT });
+// Create a WebSocket Server on the specified port
+const wss = new WebSocket.Server({ port: PORT });
 
+// Default state
 let currentState = 'start-break';
 
+// Broadcast function to send messages to all connected clients
 function broadcast(message) {
-  server.clients.forEach(function each(client) {
+  wss.clients.forEach(function each(client) {
     if (client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
   });
 }
 
-server.on('connection', function connection(ws) {
+// Event listener for new connections to the WebSocket server
+wss.on('connection', function connection(ws) {
   console.log('Client connected');
 
+  // Event listener for messages from the clients
   ws.on('message', function incoming(message) {
-    const messageStr = message.toString(); // Convert Buffer to string
-    console.log('Received:', messageStr);
-    broadcast(messageStr); // Echo back the message as a string
+    console.log('Received:', message);
+    // Update the current state and broadcast the message
+    if (message === 'start-study' || message === 'start-break') {
+      currentState = message;
+    }
+    broadcast(message);
   });
 
-  ws.send('Welcome!');
+  // Send the current state to the newly connected client
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(currentState);
+  }
 });
 
 console.log(`Server is running on ws://localhost:${PORT}`);
