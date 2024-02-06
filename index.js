@@ -1,26 +1,19 @@
 const WebSocket = require('ws');
-const http = require('http');
+const PORT = process.env.PORT || 8080;
 
-const server = http.createServer();
-const wss = new WebSocket.Server({ noServer: true });
-
-server.on('upgrade', function upgrade(request, socket, head) {
-  wss.handleUpgrade(request, socket, head, function done(ws) {
-    wss.emit('connection', ws, request);
-  });
-});
+const server = new WebSocket.Server({ port: PORT });
 
 let currentState = 'start-break';
 
 function broadcast(message) {
-  wss.clients.forEach(function each(client) {
+  server.clients.forEach(function each(client) {
     if (client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
   });
 }
 
-wss.on('connection', function connection(ws) {
+server.on('connection', function connection(ws) {
   console.log('Client connected');
 
   ws.on('message', function incoming(message) {
@@ -31,5 +24,4 @@ wss.on('connection', function connection(ws) {
   ws.send('Welcome!');
 });
 
-const PORT = process.env.PORT || 8080;
-server.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
+console.log(`Server is running on ws://localhost:${PORT}`);
