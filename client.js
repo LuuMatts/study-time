@@ -92,4 +92,4 @@ document.addEventListener('DOMContentLoaded', function() {
     if (playSoundButton) { // Check if the button exists
         playSoundButton.addEventListener('click', handleMobilePlay);
     }
-});
+    }});
