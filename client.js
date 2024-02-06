@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // When the WebSocket connection is open
     ws.onopen = function() {
         console.log('Connected to the server');
-        // Request the current state as soon as the connection opens
+        // Now it's safe to send a message
         ws.send('request-current-state');
     };
 

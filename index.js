@@ -17,8 +17,9 @@ server.on('connection', function connection(ws) {
   console.log('Client connected');
 
   ws.on('message', function incoming(message) {
-    console.log('Received:', message);
-    broadcast(message); // Echo back the message
+    const messageStr = message.toString(); // Convert Buffer to string
+    console.log('Received:', messageStr);
+    broadcast(messageStr); // Echo back the message as a string
   });
 
   ws.send('Welcome!');
