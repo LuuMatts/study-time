@@ -27,23 +27,17 @@ wss.on('connection', function connection(ws) {
     ws.send(currentState);
 
     ws.on('message', function incoming(message) {
-        console.log('Received:', message);
+        const messageStr = message.toString();
+        console.log('Received:', messageStr); // Ensure this logs the expected state changes
 
-        if (message === 'request-current-state') {
-            // Send the current state back to the requesting client
-            ws.send(currentState);
-        } else if (message === 'start-study' || message === 'start-break') {
-            // Update the current state and broadcast it
-            currentState = message;
-            broadcast(message);
+        // Update this section to ensure currentState updates correctly
+        if (messageStr === 'start-study' || messageStr === 'start-break') {
+            currentState = messageStr;
+            broadcast(currentState); // Ensure this broadcasts the new state
+        } else if (messageStr === 'request-current-state') {
+            ws.send(currentState); // Make sure this sends the updated currentState
         }
     });
-
-
-  // Send the current state to the newly connected client
-  if (ws.readyState === WebSocket.OPEN) {
-    ws.send(currentState);
-  }
 });
 
 console.log(`Server is running on ws://localhost:${PORT}`);

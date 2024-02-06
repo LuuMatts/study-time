@@ -1,7 +1,7 @@
 {
-  "name": "your-application-name",
+  "name": "study-sounds",
   "version": "1.0.0",
-  "description": "Your application description",
+  "description": "Sync to stream and select your desired study-sound",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
