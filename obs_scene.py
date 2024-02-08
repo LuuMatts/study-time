@@ -4,7 +4,7 @@ import threading
 import ssl
 
 # Replace with your Replit WebSocket server URL
-url = "ws://app.studywithluca.com"
+url = "wss://app.studywithluca.com"
 
 # Lists of scene names for each state
 study_scenes = [
