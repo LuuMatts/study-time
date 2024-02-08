@@ -4,7 +4,7 @@ import threading
 import ssl
 
 # Replace with your Replit WebSocket server URL
-url = "ws://studysound4-env.eba-e3jmgwhv.eu-north-1.elasticbeanstalk.com/"
+url = "wss://app.studywithluca.com"
 
 # Lists of scene names for each state
 study_scenes = [
