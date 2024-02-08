@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var audioPlayer = document.getElementById('audioPlayer');
     var playSoundButton = document.getElementById('playSoundButton'); // Reference to the play button
     // Use 'wss' for secure WebSocket connections
-    var ws = new WebSocket('wss://app.studywithluca.com');
+    var ws = new WebSocket('ws://app.studywithluca.com');
 
     var isSyncMode = true; // Start in Sync mode
     var isMobile = /Mobi|Android/i.test(navigator.userAgent); // Detect mobile devices
