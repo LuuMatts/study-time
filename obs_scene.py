@@ -8,10 +8,21 @@ url = "wss://app.studywithluca.com"
 
 # Lists of scene names for each state
 study_scenes = [
-    "Study",
+    "Study Scene",
+    "Study Osmo",
 ]  # Add all your study-related scene names here
 break_scenes = [
-    "Break",
+    "Break Scene",
+    "Break Osmo",
+    "Break Osmo Out",
+    "Break Rain",
+    "Break ???",
+    "Break Zoom1",
+    "Break Party",
+    "Break Scene Out",
+    "Cam Unten Rechts",
+    "Cam Verschieben",
+    "mac",
 ]  # Add all your break-related scene names here
 
 
