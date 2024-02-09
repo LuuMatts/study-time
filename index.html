@@ -2,7 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Study Sound Control</title>
+    <title>Study Sounds</title>
+    <meta
+      name="description"
+      content="Enhance your study experience with ambient sounds synchronized to your study session. Choose from a variety of calming sounds to boost your productivity."
+    />
+    <meta
+      name="keywords"
+      content="study, sounds, ambient, productivity, focus, relaxation"
+    />
+    <meta name="author" content="StudyWithLuca" />
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="apple-touch-icon"
@@ -24,6 +33,14 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
+    <script>
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
     <div class="page-container">
       <header class="header">
         <img
@@ -54,11 +71,11 @@
       <main class="main-content">
         <h1>Study Sounds</h1>
         <p>
-          Click 'Sync to Stream' to synchronize the ambient sounds with the live
-          stream's study and break intervals, muting the sound automatically
-          during breaks. - Prefer a personalized experience?<br /><br />Select
-          'Manual' to manage the sounds at your own pace and maintain control
-          throughout your<br />
+          Select an available sound and click 'Sync to Stream' to synchronize
+          the ambient sound with the live stream's study and break intervals,
+          muting the sound automatically during breaks.<br />- Prefer a
+          personalized experience?<br /><br />Select 'Manual' to manage the
+          sound at your own pace and maintain control throughout your<br />
           study session.
         </p>
         <div class="control-buttons">
@@ -67,7 +84,7 @@
           <button id="playSoundButton" style="display: none">Play</button>
           <select id="soundSelection">
             <option value="sounds/Rain.MP3">Rain Sound</option>
-            <option value="sounds/Fire.mp3">Fire Sound</option>
+            <option value="sounds/Fire.MP3">Fire Sound</option>
             <option value="sounds/Nature Sound.mp3">Nature Sound</option>
             <option value="sounds/White Noise.mp3">White Noise</option>
             <option value="sounds/ASMR Writing.mp3">ASMR Sound</option>
