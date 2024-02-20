@@ -161,6 +161,16 @@ button:hover {
     background-color: #e10000; /* Darker shade of red for hover effect */
 }
 
+/* Styles for Twitch button */
+.twitch-button {
+    background-color: #6441A6; /* Twitch Blurple */
+    /* Add any other specific styles for the Twitch button here */
+}
+
+.twitch-button:hover {
+    background-color: #592daa; /* Darker shade of purple for hover effect */
+}
+
 /* Styles for Discord button */
 .discord-button {
     background-color: #768be5; /* Discord Blurple */
