@@ -12,6 +12,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    
+
 }
 
 /* Clouds background */
@@ -48,6 +50,22 @@ body {
   to { background-position: -1100px top; }
 }
 
+#gif-background-container {
+    position: fixed; /* or 'absolute' */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Ensure this is higher than the clouds container */
+    background-size: cover;
+    background-position: center;
+    display: none; /* Hide by default, show when needed */
+  }
+  
+.hidden {
+    display: none;
+}
+
 .logo-image {
     height: 50px; /* Adjust as needed */
     width: auto; /* Maintain aspect ratio */
@@ -62,6 +80,7 @@ body {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 3;
   }
   
   .logo {
@@ -131,7 +150,7 @@ h1 {
 }
 
 button {
-    background-color: #1c1b1b;
+    background-color: #007BFF;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -171,6 +190,14 @@ button:hover {
     background-color: #592daa; /* Darker shade of purple for hover effect */
 }
 
+.instagram-button {
+    background-color: #E1306C; /* Instagram brand color */
+}
+
+.instagram-button:hover {
+    background-color: #c13584; /* Darker shade for hover effect */
+}
+
 /* Styles for Discord button */
 .discord-button {
     background-color: #768be5; /* Discord Blurple */
@@ -200,19 +227,15 @@ button:hover {
     }
 }
 
-
-select {
+/*
+select { /* "Choose a Sound"
     padding: 10px;
-    margin: 0 10px;
+    margin: 0 5px;
     border-radius: 5px;
     font-size: 1em;
 }
+*/
 
-audio {
-    width: 100%;
-    margin-top: 10px;
-    filter: drop-shadow(0 0 0.2rem rgb(4, 4, 4));;
-}
 
 footer {
     position: absolute;
@@ -266,3 +289,149 @@ footer p {
         font-size: 0.8em; /* Smaller font size for select on mobile */
     }
 }
+
+
+/* Pomodoro Timer Styles */
+#pomodoro {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+  
+  #timer {
+    font-family: 'Roboto', sans-serif;
+    transition: opacity 0.3s;
+  opacity: 1; /* Full visibility by default */
+}
+
+/* Add a class in JavaScript when you start or reset the timer to control the opacity */
+.timer-hidden {
+  opacity: 0; /* Fully transparent */
+}
+  
+  
+  #title { /*"Ready?*/
+    font-size: 1.5rem;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+  
+  #countdown {
+    font-size: 3rem;
+    color: #333333;
+    margin-bottom: 1rem;
+  }
+  
+ 
+  
+  #controls button:hover,
+  #options button:hover {
+    background: #0056b3;
+  }
+  
+  #options {
+    display: flex;
+    justify-content: space-around; /* This will space out your session and break controls evenly */
+    align-items: center; /* This will vertically align your controls */
+    margin-top: 1rem;
+  }
+
+  #session, #break {
+    display: flex;
+    align-items:center; /* This will vertically align the buttons and input field */
+  }
+  
+  .option-title {
+    margin: 0;
+  }
+  
+
+
+/* Styling for the plus and minus buttons and the number input fields */
+#options button, #options input[type='number'] {
+    background-color: #007bff; /* This is the background color for the buttons */
+    color: white; /* This is the text color for the buttons */
+    border: none;
+    padding: 10px 20px; /* This is the padding inside the buttons */
+    margin: 0 5px; /* This is the margin around the buttons */
+    font-size: 1rem; /* This is the font size inside the buttons */
+    border-radius: 5px; /* This will create rounded corners for the buttons */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s; /* This adds a transition effect for hover states */
+  }
+
+ /* Ensures the input fields do not become too wide and matches the height of buttons */
+#options input[type='number'] {
+    width: 60px; /* Adjust as necessary */
+    text-align: center;
+  } 
+
+/* Hover state for buttons */
+#options button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Soft shadow for depth */
+  }
+
+
+
+
+/* Audio Controls */
+audio {
+  width: 100%;
+  margin-top: 10px;
+  filter: drop-shadow(0 0 0.2rem rgb(4, 4, 4));
+}
+
+
+  #session-length,
+  #break-length {
+    font-weight: bold;
+  }
+  
+  #sound-selection {
+    margin-top: 1rem;
+  }
+  
+  #sound-selection label {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  #soundOptions {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #pomodoro {
+      width: 90%;
+      padding: 10px;
+    }
+  
+    #countdown {
+      font-size: 2.5rem;
+    }
+
+  }
+    
+  
+    /* For Webkit browsers like Chrome and Safari */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+

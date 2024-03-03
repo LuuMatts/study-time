@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Study Sounds</title>
+    <title>Study Time</title>
     <meta
       name="description"
-      content="Enhance your study experience with ambient sounds synchronized to your study session. Choose from a variety of calming sounds to boost your productivity."
+      content="Enhance your study experience with ambient sounds synchronized to your pomodoro timer. Choose from a variety of calming sounds to boost your productivity."
     />
     <meta
       name="keywords"
-      content="study, sounds, ambient, productivity, focus, relaxation"
+      content="study, sounds, pomodoro, ambient, productivity, focus, relaxation"
     />
     <meta name="author" content="StudyWithLuca" />
     <link rel="stylesheet" href="styles.css" />
@@ -31,16 +31,13 @@
       href="images/favicon-16x16.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
+    <!-- Include FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
   </head>
   <body>
-    <script>
-      window.va =
-        window.va ||
-        function () {
-          (window.vaq = window.vaq || []).push(arguments);
-        };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
     <div class="page-container">
       <header class="header">
         <img
@@ -55,55 +52,121 @@
             href="https://www.youtube.com/channel/UCCUGEFoKFHuhGWhj7ZrR9ag"
             target="_blank"
             class="header-button youtube-button"
-            >YouTube</a
           >
+            <i class="fab fa-youtube"></i
+          ></a>
           <a
             href="https://www.twitch.tv/studywithluca"
             target="_blank"
             class="header-button twitch-button"
-            >Twitch</a
+            ><i class="fab fa-twitch"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/yourusername"
+            target="_blank"
+            class="header-button instagram-button"
           >
+            <i class="fab fa-instagram"></i>
+          </a>
           <a
             href="https://discord.gg/tB9MdCAAm3"
             target="_blank"
             class="header-button discord-button"
-            >Discord</a
-          >
+            ><i class="fab fa-discord"></i
+          ></a>
         </nav>
       </header>
       <div class="container">
+        <div id="gif-background-container"></div>
+        <!-- Corrected ID -->
         <div id="cloud-intro"></div>
       </div>
       <main class="main-content">
-        <h1>Study Sounds</h1>
-        <p>
-          Select an available sound and click 'Sync to Stream' to synchronize
-          the ambient sound with the live stream's study and break intervals,
-          muting the sound automatically during breaks.<br />- Prefer a
-          personalized experience?<br /><br />Select 'Manual' to manage the
-          sound at your own pace and maintain control throughout your<br />
-          study session.
-        </p>
-        <div class="control-buttons">
-          <button id="syncModeButton">Sync to Stream</button>
-          <button id="manualModeButton">Manual</button>
-          <button id="playSoundButton" style="display: none">Play</button>
-          <select id="soundSelection">
-            <option value="sounds/Rain.MP3">Rain Sound</option>
-            <option value="sounds/Fire.MP3">Fire Sound</option>
-            <option value="sounds/Nature Sound.mp3">Nature Sound</option>
-            <option value="sounds/White Noise.mp3">White Noise</option>
-            <option value="sounds/ASMR Writing.mp3">ASMR Sound</option>
-            <!-- Add more options as needed -->
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+
+        <h1>Study Time</h1>
+        <!-- The Pomodoro Timer HTML -->
+        <div id="pomodoro">
+          <!-- Timer Display -->
+          <div id="clock">
+            <div id="timer">
+              <div id="title">Ready?</div>
+              <div id="countdown">
+                <span id="minutes">60</span>:<span id="seconds">00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Timer Controls -->
+          <div id="controls" class="reset">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+          </div>
+          <!-- Timer Options -->
+          <div id="options">
+            <!-- Session Length -->
+            <div id="session">
+              <button id="incrSession">+</button>
+              <span class="option-title"></span>
+              <input
+                id="sessionInput"
+                type="number"
+                value="60"
+                min="5"
+                max="120"
+              />
+              <!-- This line was missing -->
+              <span></span>
+              <button id="decrSession">-</button>
+            </div>
+            <!-- Break Length -->
+            <div id="break">
+              <button id="incrBreak">+</button>
+              <span class="option-title"></span>
+              <input
+                id="breakInput"
+                type="number"
+                value="10"
+                min="1"
+                max="60"
+              />
+              <!-- This line was missing -->
+              <span></span>
+              <button id="decrBreak">-</button>
+            </div>
+          </div>
+        </div>
+        <div id="sound-selection">
+          <label for="soundOptions"></label>
+          <select id="soundOptions">
+            <option value="sounds/Rain.MP3">Rain</option>
+            <option value="sounds/Fire.MP3">Fire</option>
+            <option value="sounds/Nature Sound.MP3">Nature</option>
+            <option value="sounds/ASMR.MP3">ASMR</option>
+            <option value="sounds/White Noise.MP3">White Noise</option>
+            <!-- Add more sound options as needed -->
           </select>
         </div>
-        <audio id="audioPlayer" controls loop controlsList="nodownload"></audio>
+        <!-- Your other content -->
+        <!-- The Pomodoro Timer HTML ends here -->
+
+        <audio
+          id="audioPlayer"
+          controls
+          autoplay
+          loop
+          controlsList="nodownload"
+        ></audio>
       </main>
+
       <footer class="footer">
         <hr />
         <p>Copyright &copy; StudyWithLuca</p>
       </footer>
     </div>
-    <script src="client.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
